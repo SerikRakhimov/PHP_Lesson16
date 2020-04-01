@@ -10,6 +10,7 @@
                 @method('DELETE');
             </form>
         </a>
+    <a class="btn btn-primary" href="{{ route('order.index', $order) }}">Список заявок</a>
 </div>
 
 <h1>{{$order->info}}</h1>
