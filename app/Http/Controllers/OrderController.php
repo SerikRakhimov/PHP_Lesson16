@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -21,10 +22,9 @@ class OrderController extends Controller
     protected function rules()
     {
         return [
-            'info' => 'required',
+            'input' => 'required',
             'language' => 'required',
-            'sum' => 'required|min:0',
-            'customer' => 'required'
+            'output' => 'required'
         ];
     }
 
@@ -33,11 +33,12 @@ class OrderController extends Controller
         $request->validate($this->rules());
 
 
-        $order = new Order($request->except('_token'));
+        $order = new Order($request->except('_token','user_id'));
+        $order->user_id =Auth::user()->id;
 
         $order->save();
 
-        return redirect()->route('order.show', $order);
+        return redirect()->route('order.index');
 
     }
 

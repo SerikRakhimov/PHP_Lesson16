@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
 
-    protected $fillable = ['info','language','sum','customer'];
+    protected $fillable = ['input','language','output','user_id'];
 
 }

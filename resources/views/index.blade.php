@@ -1,10 +1,12 @@
 @extends('layouts.app')
+
+@section('content')
 <br>
 <h3>Список заявок на перевод:</h3>
 <br>
     @foreach($orders as $order)
         <a href="{{route('order.show',$order)}}" class="mb-3 card card-body d-flex flex-row align-items-center">
-            {{$order->info}}
+            {{$order->input}}
         </a>
     @endforeach
 
@@ -16,3 +18,4 @@
         Назад
     </a>
 </div>
+@endsection
